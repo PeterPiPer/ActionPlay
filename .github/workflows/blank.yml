@@ -33,9 +33,10 @@ jobs:
         id: fetch_comments
         run: |
             comments=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments)
-            first_comment=$(echo "$comments" | jq -r '.[0].body')
-            echo "First comment: $first_comment"
-            echo "::set-output name=first_comment::$first_comment"
+            echo $comments
+            #first_comment=$(echo "$comments" | jq -r '.[0].body')
+            #echo "First comment: $first_comment"
+            #echo "::set-output name=first_comment::$first_comment"
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
