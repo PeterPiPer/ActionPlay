@@ -28,7 +28,15 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
-        
+
+      - name: Get PR deets
+        echo "Pull Request Number: ${{ github.event.pull_request.number }}"
+        echo "Pull Request Title: ${{ github.event.pull_request.title }}"
+        echo "Pull Request Body: ${{ github.event.pull_request.body }}"
+        echo "Pull Request Author: ${{ github.event.pull_request.user.login }}"
+        echo "Pull Request Base Branch: ${{ github.event.pull_request.base.ref }}"
+        echo "Pull Request Head Branch: ${{ github.event.pull_request.head.ref }}"
+        echo "Pull Request URL: ${{ github.event.pull_request.html_url }}"
       - name: Fetch pull request comments
         id: fetch_comments
         run: |
